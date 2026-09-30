@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dream Town Surprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login" class="login">
+  <div class="login-art"><div class="heart">♡</div><h1>DREAM TOWN<br><span>SURPRISES</span></h1>
+  <p>Creating moments worth remembering</p><div class="quote">“More than an event,<br><b>we create emotions</b>”</div></div>
+  <div class="login-box">
+    <div id="loginPanel">
+      <div class="mini-heart">♡</div><small>PRIVATE EVENT MANAGEMENT</small><h2>Welcome back</h2><p>Sign in to manage your surprise events.</p>
+      <form id="loginForm"><label>Email</label><input id="user" type="email" required placeholder="Enter your email"><label>Password</label><input id="pass" type="password" required placeholder="Enter your password"><div class="rowlink"><button type="button" id="forgot" class="textbtn">Forgot password?</button></div><div id="loginError" class="error"></div><button>Sign In →</button></form>
+      <div class="switch">New team member? <button type="button" id="showSignup" class="textbtn">Create account</button></div>
+    </div>
+    <div id="signupPanel" class="hidden">
+      <div class="mini-heart">♡</div><small>PRIVATE EVENT MANAGEMENT</small><h2>Create account</h2><p>Create your login. The owner can authorize staff access.</p>
+      <form id="signupForm"><label>Full name</label><input id="signupName" required placeholder="Your name"><label>Email</label><input id="signupEmail" type="email" required placeholder="you@example.com"><label>Password</label><input id="signupPass" type="password" minlength="8" required placeholder="At least 8 characters"><div id="signupError" class="error"></div><button>Create Account →</button></form>
+      <div class="switch">Already have an account? <button type="button" id="showLogin" class="textbtn">Sign in</button></div>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+<aside>
+  <div class="brand"><div>♡</div><b>DREAM TOWN</b><span>— SURPRISES —</span><p>Creating moments<br>worth remembering</p></div>
+  <nav>
+    <button class="active" data-page="dashboard">⌂ Dashboard</button>
+    <button data-page="bookings">▣ Bookings</button>
+    <button data-add>⊕ Add Booking</button>
+    <button data-page="availability">▦ Availability</button>
+    <button data-page="customers">♧ Customers</button>
+    <button data-page="reports">▥ Reports</button>
+  </nav>
+  <div class="sidequote">“More than an event,<br><b>We create emotions</b>”</div>
+  <button id="logout" class="logout">↪ Logout</button>
+</aside>
+
+<main>
+<header><button id="menu">☰</button><div class="search">⌕ <input id="search" placeholder="Search bookings, customers..."></div><div class="profile">♧　<div id="profileInitials">DT</div> <span id="profileName">Owner</span></div></header>
+
+<section id="dashboard" class="page">
+  <div class="hero"><div><small>GOOD MORNING,</small><h1><span id="welcomeName">Owner</span> 👋</h1><p>Here's your event overview for today.</p></div><div class="script">Turning<br>Special Moments<br>into Beautiful Memories ♥</div></div>
+  <div class="stats"><article class="dark"><b id="total">0</b><span>Total Bookings</span></article><article><b id="month">0</b><span>This Month</span></article><article class="pink"><b id="upcoming">0</b><span>Upcoming Events</span></article><article><b id="customers">0</b><span>Total Customers</span></article></div>
+  <div class="grid">
+    <div class="card"><div class="title"><h2>🎁 Upcoming Surprises</h2><button data-page="bookings">View All →</button></div><div id="upcomingList"></div></div>
+    <div>
+      <div class="card calendar"><div class="calhead"><button id="prev">‹</button><h3 id="calTitle"></h3><button id="next">›</button></div><div class="week"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div id="days" class="days"></div><div class="legend">● Booked　○ Available　<span>● Today</span></div></div>
+      <button class="create" data-add>＋ Create New Booking</button>
+      <div class="card quick"><h3>Quick Actions</h3><div><button data-add>▣<small>Add Booking</small></button><button data-page="bookings">▤<small>View Bookings</small></button><button data-page="availability">⌕<small>Check Availability</small></button><button data-page="customers">♧<small>Customers</small></button></div></div>
+    </div>
+  </div></section>
+
+<section id="bookings" class="page hidden"><div class="pagehead"><div><small>EVENT MANAGEMENT</small><h1>Bookings</h1><p>Manage every surprise in one place.</p></div><button class="create" data-add>＋ New Booking</button></div><div class="card"><input id="filter" class="filter" placeholder="Search bookings..."><div id="allBookings"></div></div></section>
+<section id="availability" class="page hidden"><div class="pagehead"><div><small>DATE PLANNING</small><h1>Availability</h1><p>Check a date before confirming a surprise.</p></div></div><div class="two"><div class="card"><h2>Choose a date</h2><div id="availDays" class="bigdays"></div></div><div class="card" id="availInfo"></div></div></section>
+<section id="customers" class="page hidden"><div class="pagehead"><div><small>CUSTOMER DIRECTORY</small><h1>Customers</h1></div></div><div id="customerGrid" class="customergrid"></div></section>
+<section id="reports" class="page hidden"><div class="pagehead"><div><small>BUSINESS OVERVIEW</small><h1>Reports</h1></div></div><div id="reportsGrid" class="stats"></div></section>
+</main></div>
+
+<div id="modal" class="modal hidden"><div class="modalbox"><button id="close" class="x">×</button><small>DREAM TOWN SURPRISES</small><h2 id="modalTitle">Create New Booking</h2>
+<form id="bookingForm"><input type="hidden" id="editId">
+<div class="formgrid"><div><label>Event Type *</label><select id="type" required><option value="">Choose an experience</option><option>Anniversary Surprise</option><option>Proposal Surprise</option><option>Romantic Setup</option><option>Welcome Surprise</option><option>Custom Event</option></select></div>
+<div><label>Date *</label><input id="date" type="date" required></div><div><label>Time</label><input id="time" type="time"></div><div><label>Booked By *</label><input id="bookedBy" required></div><div><label>Customer / Loved One</label><input id="customer"></div><div><label>Phone</label><input id="phone"></div><div><label>Status</label><select id="status"><option>Confirmed</option><option>Pending</option></select></div><div class="full"><label>Special Requirements</label><textarea id="notes" rows="3"></textarea></div></div>
+<div id="formError" class="error"></div><button class="save">Save Booking →</button></form></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body></html>
